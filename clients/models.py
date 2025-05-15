@@ -2,6 +2,36 @@ from django.db import models
 from django.contrib.auth.models import User
 # Create your models here.
 # client
+STATES = [
+    ('AC', 'Acre'),
+    ('AL', 'Alagoas'),
+    ('AP', 'Amapá'),
+    ('AM', 'Amazonas'),
+    ('BA', 'Bahia'),
+    ('CE', 'Ceará'),
+    ('DF', 'Distrito Federal'),
+    ('ES', 'Espírito Santo'),
+    ('GO', 'Goiás'),
+    ('MA', 'Maranhão'),
+    ('MT', 'Mato Grosso'),
+    ('MS', 'Mato Grosso do Sul'),
+    ('MG', 'Minas Gerais'),
+    ('PA', 'Pará'),
+    ('PB', 'Paraíba'),
+    ('PR', 'Paraná'),
+    ('PE', 'Pernambuco'),
+    ('PI', 'Piauí'),
+    ('RJ', 'Rio de Janeiro'),
+    ('RN', 'Rio Grande do Norte'),
+    ('RS', 'Rio Grande do Sul'),
+    ('RO', 'Rondônia'),
+    ('RR', 'Roraima'),
+    ('SC', 'Santa Catarina'),
+    ('SP', 'São Paulo'),
+    ('SE', 'Sergipe'),
+    ('TO', 'Tocantins'),
+]
+
 class Client(models.Model):
     id = models.AutoField(primary_key=True)
     user = models.OneToOneField(
@@ -23,9 +53,22 @@ class Client(models.Model):
                              blank=True,
                              verbose_name='Telefone',
                              default='')
+    adress = models.CharField(max_length=200,
+                              null=True,
+                              blank=True , 
+                              verbose_name='Endereço',default='' )
+    state = models.CharField(max_length=2, choices=STATES)
     created_at = models.DateTimeField(auto_now_add=True,
                                       verbose_name='Criado em')
     updated_at = models.DateTimeField(auto_now_add=True,
                                       verbose_name='atualizado em')
+    class Meta:
+        verbose_name ='Cliente'
+        verbose_name_plural = 'Clientes'
     def __str__(self):
-        return self.user
+        return self.name
+    
+    
+    
+    
+    
