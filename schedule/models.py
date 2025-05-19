@@ -1,8 +1,8 @@
 from django.db import models
 from clients import  models
 from clients.models import Client
-from doctors import models 
-from doctors.models import Doctor
+from doctors import models
+from doctors.models import Doctors
 # Create your models here.
 MEDICAL_SPECIALTIES = [
     ('cardiologia', 'Cardiologia'),
@@ -39,7 +39,7 @@ class Schedule(models.Model):
     appointment = models.CharField( max_length=50, 
                                    default='',
                                    verbose_name='consulta')
-    doctor = models.ForeignKey(Doctor,
+    doctor = models.ForeignKey(Doctors,
                                on_delte=models.CASCADE,
                                verbose_name='médico', 
                                blank=True, 

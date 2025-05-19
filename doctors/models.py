@@ -35,7 +35,7 @@ MEDICAL_SPECIALTIES = [
     ('urologia', 'Urologia'),
 ]
 
-class Doctor(models.Model):
+class Doctors(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100, 
                             default='',
@@ -52,14 +52,7 @@ class Doctor(models.Model):
                                    blank=True,
                                    default='', 
                                    verbose_name='Descrição',
-                                   )
-    # Time_schedule  = models.ForeignKey(Schedule,
-    #                                    on_delete=models.PROTECT,
-    #                                    related_name='schedule',
-    #                                    null = True,
-    #                                    blank = True,
-    #                                    verbose_name='agendamentos',
-    # )                     
+                                   )         
     is_acctivate = models.BooleanField(default=True,
                                        verbose_name='está disponivel')
     created_at = models.DateTimeField(auto_now_add= True)
