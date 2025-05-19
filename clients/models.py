@@ -57,7 +57,8 @@ class Client(models.Model):
                               null=True,
                               blank=True , 
                               verbose_name='Endereço',default='' )
-    state = models.CharField(max_length=2, choices=STATES)
+    photo = models.ImageField(upload_to='media/', default='')
+    state = models.CharField(max_length=2, choices=STATES, default='')
     created_at = models.DateTimeField(auto_now_add=True,
                                       verbose_name='Criado em')
     updated_at = models.DateTimeField(auto_now_add=True,

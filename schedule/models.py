@@ -1,4 +1,64 @@
 from django.db import models
 from clients import  models
 from clients.models import Client
+from doctors import models 
+from doctors.models import Doctor
 # Create your models here.
+MEDICAL_SPECIALTIES = [
+    ('cardiologia', 'Cardiologia'),
+    ('cirurgia_geral', 'Cirurgia Geral'),
+    ('cirurgia_plastica', 'Cirurgia Plástica'),
+    ('cirurgia_vascular', 'Cirurgia Vascular'),
+    ('clinica_medica', 'Clínica Médica'),
+    ('dermatologia', 'Dermatologia'),
+    ('endocrinologia', 'Endocrinologia'),
+    ('ginecologia_e_obstetricia', 'Ginecologia e Obstetrícia'),
+    ('homeopatia', 'Homeopatia'),
+    ('infectologia', 'Infectologia'),
+    ('medicina_de_familia_e_comunidade', 'Medicina de Família e Comunidade'),
+    ('medicina_do_trabalho', 'Medicina do Trabalho'),
+    ('medicina_intensiva', 'Medicina Intensiva'),
+    ('nefrologia', 'Nefrologia'),
+    ('neurologia', 'Neurologia'),
+    ('nutrologia', 'Nutrologia'),
+    ('oftalmologia', 'Oftalmologia'),
+    ('ortopedia_e_traumatologia', 'Ortopedia e Traumatologia'),
+    ('otorrinolaringologia', 'Otorrinolaringologia'),
+    ('pediatria', 'Pediatria'),
+    ('pneumologia', 'Pneumologia'),
+    ('psiquiatria', 'Psiquiatria'),
+    ('radiologia_e_diagnostico_por_imagem', 'Radiologia e Diagnóstico por Imagem'),
+    ('reumatologia', 'Reumatologia'),
+    ('urologia', 'Urologia'),
+]
+class Schedule(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.ForeignKey(Client,
+                             on_delete=models.CASCADE,
+                             verbose_name='nome')
+    appointment = models.CharField( max_length=50, 
+                                   default='',
+                                   verbose_name='consulta')
+    doctor = models.ForeignKey(Doctor,
+                               on_delte=models.CASCADE,
+                               verbose_name='médico', 
+                               blank=True, 
+                               null=True)
+    speciliaties = models.CharField(max_length=50, 
+                                    choices=MEDICAL_SPECIALTIES)
+    date = models.DateTimeField()
+    observations = models.TextField(max_length=500,
+                                    null=True,
+                                    blank=True,
+                                    verbose_name='observações',
+                                    default='')
+    is_available = models.BooleanField()
+    date_created = models.DateTimeField(auto_now_add=True)
+    carried_out = models.BooleanField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return self.appointment
+    class Meta:
+        verbose_name="Agenda"
