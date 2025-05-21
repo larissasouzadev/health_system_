@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'clients',
     'doctors',
+    'schedule',
     'rest_framework',
     
     
@@ -71,7 +72,7 @@ TEMPLATES = [
         },
     },
 ]
-
+SITE_ID=1
 WSGI_APPLICATION = 'core.wsgi.application'
 
 

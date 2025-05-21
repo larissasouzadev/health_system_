@@ -1,8 +1,7 @@
 from django.db import models
-from clients import  models
 from clients.models import Client
-from doctors import models
 from doctors.models import Doctors
+
 # Create your models here.
 MEDICAL_SPECIALTIES = [
     ('cardiologia', 'Cardiologia'),
@@ -31,7 +30,18 @@ MEDICAL_SPECIALTIES = [
     ('reumatologia', 'Reumatologia'),
     ('urologia', 'Urologia'),
 ]
-class Schedule(models.Model):
+class Schedule (models.Model):
+
+    
+
+    class Meta:
+        verbose_name = ("Agenda")
+        verbose_name_plural = ("Schedules")
+
+    def __str__(self):
+        return self.name
+
+    
     id = models.AutoField(primary_key=True)
     name = models.ForeignKey(Client,
                              on_delete=models.CASCADE,
@@ -40,7 +50,7 @@ class Schedule(models.Model):
                                    default='',
                                    verbose_name='consulta')
     doctor = models.ForeignKey(Doctors,
-                               on_delte=models.CASCADE,
+                               on_delete=models.CASCADE,
                                verbose_name='médico', 
                                blank=True, 
                                null=True)
