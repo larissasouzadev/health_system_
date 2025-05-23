@@ -56,7 +56,7 @@ class Doctors(models.Model):
     is_acctivate = models.BooleanField(default=True,
                                        verbose_name='está disponivel')
     created_at = models.DateTimeField(auto_now_add= True)
-    upadated_at= models.DateTimeField( auto_now_add=True)
+    updated_at= models.DateTimeField( auto_now_add=True)
     class Meta():
         verbose_name = 'Médico'
         verbose_name_plural = 'Médicos'

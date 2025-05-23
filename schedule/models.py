@@ -55,18 +55,17 @@ class Schedule (models.Model):
                                blank=True, 
                                null=True)
     speciliaties = models.CharField(max_length=50, 
-                                    choices=MEDICAL_SPECIALTIES)
-    date = models.DateTimeField()
+                                    choices=MEDICAL_SPECIALTIES, verbose_name='especialidade')
+    date = models.DateTimeField(verbose_name='data')
     observations = models.TextField(max_length=500,
                                     null=True,
                                     blank=True,
                                     verbose_name='observações',
                                     default='')
-    is_available = models.BooleanField()
-    date_created = models.DateTimeField(auto_now_add=True)
-    carried_out = models.BooleanField()
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now_add=True)
+    is_available = models.BooleanField(verbose_name='é avaliado')
+    carried_out = models.BooleanField(verbose_name='realizada')
+    created_at = models.DateTimeField(auto_now_add=True,verbose_name='data de criação')
+    updated_at = models.DateTimeField(auto_now_add=True,verbose_name='data de atualização')
     
     def __str__(self):
         return self.appointment
