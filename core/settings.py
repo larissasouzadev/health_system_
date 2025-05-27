@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'clients',
     'doctors',
     'schedule',
+    'appointment',
     'rest_framework',
     
     
