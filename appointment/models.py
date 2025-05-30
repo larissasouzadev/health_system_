@@ -66,7 +66,7 @@ class Appointment (models.Model):
     
 class Meta:
         verbose_name = ("Agendamento")
-        verbose_name_plural = ("Schedules")
+        verbose_name_plural = ("Appointments")
 
 def __str__(self):
         return self.name
