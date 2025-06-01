@@ -12,6 +12,8 @@ class Schedule(models.Model):
                                verbose_name='médico'
                                )
     date = models.DateField(verbose_name='data')
+    available_schedule = models.BooleanField(default=False,
+                                             verbose_name="horário disponível")
     hour = models.TimeField(verbose_name='horário')
     created_at = models.DateTimeField(auto_now_add=True,
                                       verbose_name='criado em ')

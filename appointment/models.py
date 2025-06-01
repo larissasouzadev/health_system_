@@ -59,7 +59,9 @@ class Appointment (models.Model):
                                     blank=True,
                                     verbose_name='observações',
                                     default='')
-    is_available = models.BooleanField(verbose_name='é avaliado')
+    is_available = models.BooleanField(
+        default=False,
+        verbose_name='é avaliado')
     carried_out = models.BooleanField(verbose_name='realizada')
     created_at = models.DateTimeField(auto_now_add=True,verbose_name='data de criação')
     updated_at = models.DateTimeField(auto_now_add=True,verbose_name='data de atualização')
