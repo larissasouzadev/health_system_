@@ -4,7 +4,7 @@ from . import models
 from .models import Schedule
 @admin.register(Schedule)
 class AdminSchedule(admin.ModelAdmin):
-    list_display = ['client', 'doctor', 'date','hour']
+    list_display = ['client', 'doctor', 'date','hour',]
     list_filter = [ 'doctor', 'date']
 
 

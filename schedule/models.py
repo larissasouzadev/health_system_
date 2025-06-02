@@ -1,9 +1,8 @@
 from django.db import models
 from clients.models import Client
 from doctors.models import Doctors
-
+from appointment.models import Appointment
 class Schedule(models.Model):
-    id = models.AutoField(primary_key=True)
     client = models.ForeignKey(Client, 
                                on_delete=models.CASCADE,
                                verbose_name='cliente')
@@ -11,10 +10,19 @@ class Schedule(models.Model):
                                on_delete=models.CASCADE,
                                verbose_name='médico'
                                )
-    date = models.DateField(verbose_name='data')
-    available_schedule = models.BooleanField(default=False,
-                                             verbose_name="horário disponível")
-    hour = models.TimeField(verbose_name='horário')
+    date = models.ForeignKey(Appointment,
+                             on_delete=models.PROTECT,
+                             verbose_name='data',
+                             related_name='date_schedule')
+    
+    hour = models.ForeignKey(Appointment,
+                             on_delete=models.PROTECT,
+                             verbose_name='horário',
+                             related_name='hour_schedule',
+                             
+    )
+    carried_out = models.BooleanField(default=False,
+                                      verbose_name='realizada')
     created_at = models.DateTimeField(auto_now_add=True,
                                       verbose_name='criado em ')
     updated_at = models.DateTimeField(auto_now_add=True,

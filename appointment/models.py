@@ -53,20 +53,24 @@ class Appointment (models.Model):
                                null=True)
     speciliaties = models.CharField(max_length=50, 
                                     choices=MEDICAL_SPECIALTIES, verbose_name='especialidade')
-    date = models.DateTimeField(verbose_name='data')
+    date = models.DateField(verbose_name='data',
+                                default='')
     observations = models.TextField(max_length=500,
                                     null=True,
                                     blank=True,
                                     verbose_name='observações',
                                     default='')
-    is_available = models.BooleanField(
-        default=False,
-        verbose_name='é avaliado')
-    carried_out = models.BooleanField(verbose_name='realizada')
+    hour = models.TimeField(verbose_name='horário',
+                            default='00:00'
+                            )
+    available_schedule = models.BooleanField(default=False,
+                                             verbose_name="horário disponível")
+   
     created_at = models.DateTimeField(auto_now_add=True,verbose_name='data de criação')
     updated_at = models.DateTimeField(auto_now_add=True,verbose_name='data de atualização')
     
 class Meta:
+        unique_together = ('doctor', 'date','hour')
         verbose_name = ("Agendamento")
         verbose_name_plural = ("Appointments")
 
