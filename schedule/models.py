@@ -4,8 +4,8 @@ from doctors.models import Doctors
 from appointment.models import Appointment
 class Schedule(models.Model):
     client = models.ForeignKey(Client, 
-                               on_delete=models.CASCADE,
-                               verbose_name='cliente')
+                      on_delete=models.CASCADE,
+                      verbose_name='cliente')
     doctor = models.ForeignKey(Doctors,
                                on_delete=models.CASCADE,
                                verbose_name='médico'
