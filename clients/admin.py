@@ -9,3 +9,4 @@ class ClientAdmin(admin.ModelAdmin):
         list_display = ['name', 'phone', 'state', 'created_at', 'updated_at',]
         search_fields = ['name']
         list_filter = ['name']
+
