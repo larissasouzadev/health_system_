@@ -7,5 +7,3 @@ class AppointmentAdmin(admin.ModelAdmin):
     list_display = ['name', 'appointment', 'doctor','speciliaties','date','created_at','updated_at', ]
     search_fields = ['name', 'appointment']
     list_filter = ['name', 'date']
-
-
